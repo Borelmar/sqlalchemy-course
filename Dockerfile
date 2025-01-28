@@ -1,11 +1,9 @@
 FROM python:3.12-alpine3.21
 
-RUN pip install --no-cache-dir poetry
+WORKDIR /app
 
-COPY /bot /bot
+COPY /app /app
 
-WORKDIR /bot
+RUN pip install --no-cache-dir -r requirements.txt
 
-RUN poetry install --no-interaction
-
-ENTRYPOINT ["poetry", "run", "python", "run.py"]
+ENTRYPOINT ["python3", "database.py"]
