@@ -1,11 +1,7 @@
 import asyncio
-#from bot import start_bot
-from database import init_db, test
-
-async def main():
-    #await start_bot()
-    await test()
+from bot import start_bot
+import database
 
 if __name__ == '__main__':
-    init_db()
-    asyncio.run(main())
+    database.create_schema()
+    asyncio.run(start_bot())
